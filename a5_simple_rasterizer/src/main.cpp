@@ -42,53 +42,29 @@ void setup() {
 	bg.enableColorCorrection(true);
 	matrix.addLayer(&bg);
 	matrix.setBrightness(255);
-
-	// Init the library and the matrix
 	matrix.begin();
-
 }
-
-
-int frame = 0;
 
 void loop() {
 
-
-	// calculate an offset (-1 to 1), based on "time" (frame)
-	float cx = sin((float) frame * 0.014);
-	float cy = cos((float) frame * 0.018);
+	int cx = TOTAL_WIDTH / 2.0;
+	int cy = TOTAL_HEIGHT / 2.0;
+	float r = 10.0;
 
 	for (int j=0; j<TOTAL_HEIGHT; j++) {
 		for (int i=0; i<TOTAL_WIDTH; i++) {
 
-			// normalized coordinates of the pixels: 
-			// instead of 0 to 31 we have -1.0 to 1.0			
-			float x = (float) i / (TOTAL_WIDTH - 1) * 2.0 - 1.0;
-			float y = (float) j / (TOTAL_HEIGHT - 1) * 2.0 - 1.0;
-			
-			// add some offset 
-			x += cx;
-			y += cy;
+			float dx = cx - i;
+			float dy = cy - j;
+			float d = sqrt( dx * dx + dy * dy);
 
-			// geometric distance of each point to the center
-			float d = sqrt( x * x + y * y);
-			// ...or as an alternative we could calculate the "Manhattan distance"
-			//float d = abs(x) + abs(y);
-
-			// we could draw a "hard" circle based on the distance...
-			// if ( d < 0.7) {
-			// 	bg.drawPixel(i, j, {255, 0, 0});
-			// } else {
-			// 	bg.drawPixel(i, j, {0, 0, 0});
-			// }
-			
-			// ...or obtain a "gray" value from the distance plugged into a periodic funtion
-			int gray = (sin(d * 12.0 - frame * 0.3) * 0.5 + 0.5) * 255.0;
-
-			bg.drawPixel(i, j, {gray, gray, gray});
+			if (d <= r) {
+				bg.drawPixel(i, j, {100, 100, 100});
+			} else {
+				bg.drawPixel(i, j, {0, 0, 0});
+			}
 		}
 	}
 
 	bg.swapBuffers();
-	frame++;
 }
