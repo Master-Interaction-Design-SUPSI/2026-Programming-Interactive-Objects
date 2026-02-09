@@ -90,3 +90,6 @@ the phyiscial LED matrix, a possible context, LEDs as light source(s),
 ## Sources
 - [Design Q&A with Charles and Ray Eames](https://www.hermanmiller.com/stories/why-magazine/design-q-and-a-charles-and-ray-eames/)
 - [AONDEMO - a demo for an old telephone](https://www.youtube.com/watch?v=GPG6a__Q0Sg)
+- [Inigo Quilez: 2D distance functions](https://iquilezles.org/articles/distfunctions2d/)
+- [Inigo Quilez: 23 distance functions](https://iquilezles.org/articles/distfunctions/)
+- [Inigo Quilez: [Painting a Landscape with Mathematics](https://www.youtube.com/watch?v=BFld4EBO2RE&t=2268s)
