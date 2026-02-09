@@ -66,14 +66,14 @@ Aleternative to the custom PicoDriver:
 - Code exercises, theory
 - Personal reserach, prototyping, project development 
 - Daily feedback and project discussion  
-- Guest: Raven Kwok 
 
 ### Day 3
 - Code exercises, theory
 - Personal reserach, prototyping, project development 
 - Daily feedback and project discussion  
+- Guest: Raven Kwok (16h)
 
-### Day 3
+### Day 4
 - Code exercises, theory
 - Personal reserach, prototyping, project development 
 - Daily feedback and project discussion
