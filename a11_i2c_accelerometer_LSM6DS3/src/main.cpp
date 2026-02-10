@@ -1,6 +1,7 @@
 /**
- * Reading values from LSM6DS3
- * Connect the sensor as follows
+ * LSM6DS3 - 6 axis accelerometer / gyro.
+ *
+ * Connection:
  * VCC <-> 5V
  * GND <-> GND
  * SDA <-> 23
@@ -10,11 +11,12 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "LSM6DS3.h"
-LSM6DS3 imu(I2C_MODE, 0x6A);
 
 #define WIRE Wire
 #define I2C_SDA 23
 #define I2C_SCL 2
+
+LSM6DS3 imu(I2C_MODE, 0x6A);
 
 void setup() {
 
@@ -24,13 +26,12 @@ void setup() {
 
 	if (imu.begin() != 0) {
 		while (1) {
-			Serial.println("ERROR initializing LSM6DS3.");
+			Serial.println("Error initializing LSM6DS3.");
 			delay(1000);
 		}
 	}
 
 	Serial.println("LSM6DS3 initialized.");
-
 }
 
 void loop() {
@@ -57,5 +58,5 @@ void loop() {
 	Serial.print("accelZ = ");
 	Serial.println(accelZ);
 
-	delay(100); // Oppdater 10 ganger per sekund
+	delay(100);
 }
