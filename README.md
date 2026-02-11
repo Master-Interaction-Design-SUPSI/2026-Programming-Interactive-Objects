@@ -106,7 +106,8 @@ the phyiscial LED matrix, a possible context, LEDs as light source(s),
 - Show hand drawings and sketches, low-quality screenshots or videos, a little demo, an animation  
 - No mood-boards! No projects of others that involve LED matrices! Do (deep) research instead on the boader topic(s). 
 
-
+# Process
+The design process is iterative by nature, continuous feedback and refinement are fundamental for a good outcome. Don’t vibe-code the process away. 
 
 ## Sources
 - [Design Q&A with Charles and Ray Eames](https://www.hermanmiller.com/stories/why-magazine/design-q-and-a-charles-and-ray-eames/)
