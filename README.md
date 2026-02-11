@@ -88,7 +88,7 @@ Pixel based algorithms:
 - Code exercises, theory
 - Personal reserach, prototyping, project development 
 - Daily feedback and project discussion  
-- Guest: Raven Kwok (16h)
+- Guest: Raven Kwok (16h), [X](https://x.com/RavenKwok), [Instagram](https://www.instagram.com/_ravenkwok/)
 
 ### Day 4
 - Code exercises, theory
