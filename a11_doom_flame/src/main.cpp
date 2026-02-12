@@ -22,10 +22,11 @@ SMARTMATRIX_ALLOCATE_BACKGROUND_LAYER(bg, TOTAL_WIDTH, TOTAL_HEIGHT, COLOR_DEPTH
 
 uint8_t pixel_data[TOTAL_WIDTH * TOTAL_HEIGHT];
 
+uint16_t num_pixels = TOTAL_WIDTH * TOTAL_HEIGHT;
+
 rgb24 palette[] = {
 	rgb24(0, 0, 0),
-	rgb24(32, 7, 7),      // Dark red
-	rgb24(64, 7, 7),      // Red
+	rgb24(42, 7, 7),      // Dark red
 	rgb24(128, 0, 0),     // Bright red
 	rgb24(180, 32, 0),    // Red-orange
 	rgb24(220, 64, 0),    // Orange
@@ -46,32 +47,34 @@ void setup() {
 
 	matrix.begin();
 
-
-	for (int i = 0; i < TOTAL_WIDTH * TOTAL_HEIGHT; i++) {
-		pixel_data[i] = palette_size - 1;
-	}
-
 }
 
 void loop() {
 
+	// Randomize the bottom row
+	// This could be much more structure (instead of random)
+	for (int i = 0; i < TOTAL_WIDTH; i++) {
+		pixel_data[TOTAL_WIDTH * (TOTAL_HEIGHT - 1) + i] = palette_size - 1 - random(0, 3);
+	}
 
 	// Propagate the pixels upwards
 	for (int y = 0; y < TOTAL_HEIGHT - 1; y++) {
 		for (int x = 0; x < TOTAL_WIDTH; x++) {
 			uint64_t current_pixel = y * TOTAL_WIDTH + x;
-			uint64_t previous_pixel = (y + 1) * TOTAL_WIDTH + x;
-			pixel_data[current_pixel] = max(0, pixel_data[previous_pixel] - 1);
+
+			// Read from below or from a random neighbor?
+			int8_t offsetX = random(0, 3) == 0 ? 0 : random(0, 3) - 1;
+			uint64_t previous_pixel = ((y + 1) * TOTAL_WIDTH + (x + offsetX + TOTAL_WIDTH) % TOTAL_WIDTH);
+
+			// Whould we fade?
+			uint8_t fade = random(0, 3) == 0 ? 1 : 0;
+
+			pixel_data[current_pixel] = max(0, pixel_data[previous_pixel] - fade);
 		}
 	}
 
-	// Randomize the bottom row
-	for (int i = 0; i < TOTAL_WIDTH; i++) {
-		pixel_data[TOTAL_WIDTH * (TOTAL_HEIGHT - 1) + i] = random(0, palette_size);
-	}
-
 	// Draw the pixels
-	for (int i = 0; i < TOTAL_WIDTH * TOTAL_HEIGHT; i++) {
+	for (int i = 0; i < num_pixels; i++) {
 		uint8_t x = i % TOTAL_WIDTH;
 		uint8_t y = i / TOTAL_WIDTH;
 		bg.drawPixel(x, y, palette[pixel_data[i]]);
