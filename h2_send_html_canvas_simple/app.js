@@ -19,10 +19,6 @@ requestAnimationFrame(loop)
 
 
 
-
-// Start the animation loop
-requestAnimationFrame(loop)
-
 function loop(time) {
 
 	requestAnimationFrame(loop)
