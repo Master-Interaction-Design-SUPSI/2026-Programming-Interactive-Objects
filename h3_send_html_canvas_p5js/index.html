@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<style>
+		body {
+			background-color: lightgray;
+			margin: 2em
+		}
+		pre {
+			font-size: 12px;
+			display: block;
+			width: 60ch;
+			margin: 0;
+			padding: 0;
+		}
+		canvas {
+			display: block;
+			background-color: black;
+			image-rendering: pixelated;
+			width: 320px !important;
+			height: 320px !important;
+		}
+		button {
+			margin-bottom: 1em;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button id="connect">Connect Serial Port</button>
+	<pre>Connect to the serial port of the Pico Driver (Chrome only)</pre>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+	<script src="app.js"></script>
+	<script src="serial_port_writer.js"></script>
+</body>
+</html>
